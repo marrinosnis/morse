@@ -1,4 +1,6 @@
-#include "morse.h"
+#include <string>
+#include <iostream>
+#include "MorseDecoder.h"
 #include "morseDictionary.h"
 
 std::string MorseDecoder::decodeMorse(std::string morseCode){
@@ -43,8 +45,10 @@ std::string MorseDecoder::decodeMorse(std::string morseCode){
         }
     }
   
-   decoded += MORSE_CODE[word]; //a last one conversation is added, because when it reaches at the last symbol, '.' or '-', 
+    decoded += MORSE_CODE[word]; //a last one conversation is added, because when it reaches at the last symbol, '.' or '-', 
                                 //there is no space after that, so the proper part conversion code isn't execute. That's why 
                                 //it is added here.
+
+
     return decoded;
 }

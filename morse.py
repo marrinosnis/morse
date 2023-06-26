@@ -1,3 +1,6 @@
+import ctypes
+
+# cpplibrary = ctypes.CDLL("/home/marinos/Desktop/morseCoder/cppMorse.so")
 
 def findTransmissionRate(pos, bit, morseString):
     size = 0
@@ -80,6 +83,22 @@ while i < len(decodedString):
 # Until here I find the proper form of Morse code with dots and dashes. morseString contains the form with dots '.' and dashed '-'
 
 print(morseString)
+# from here I pass the variable to the c++ function and it will print the human string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #deprecated

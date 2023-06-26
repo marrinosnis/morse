@@ -1,7 +1,6 @@
+#pragma once
 #include <map>
-#include <string>
-
-std::map<std::string, std::string> MORSE_CODE = {  
+std::map<std::string, std::string>  MORSE_CODE = {  
 {".-"   ,     "A"} , 
 {"-..." ,     "B"} , 
 {"-.-." ,     "C"} , 

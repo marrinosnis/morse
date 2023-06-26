@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "morse/morse.h"
+#include "morse/MorseDecoder.h"
 
-int main(){
+int main(int argc, char* argv[]){
 
   MorseDecoder md;
 
@@ -14,5 +14,7 @@ int main(){
 
   std::cout<<"The text is:\n" << humanString << '\n';
 
+
   return 0;
 }
+
