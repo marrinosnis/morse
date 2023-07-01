@@ -1,6 +1,5 @@
-import ctypes
+import morse
 
-# cpplibrary = ctypes.CDLL("/home/marinos/Desktop/morseCoder/cppMorse.so")
 
 def findTransmissionRate(pos, bit, morseString):
     size = 0
@@ -85,54 +84,7 @@ while i < len(decodedString):
 print(morseString)
 # from here I pass the variable to the c++ function and it will print the human string
 
+mr = morse.MorseDecoderString()
+humanString = mr.decodeMorse(morseString)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#deprecated
-# i = 0
-# while i < (len(decodedString)-1): 
-#         if i == len(decodedString):
-#             if decodedString[i] == "1":
-#                 morseString += "."
-#             else:
-#                 break
-
-#         if decodedString[i] == "1":
-#             if decodedString[i+1] == "1":
-#                 if decodedString[i+2] == "1":
-#                     morseString += "-"
-#                     i += 3
-            
-#             elif decodedString[i+1] == "0": # after one '1', we found a '0' which means it is a dot '.'
-#                 morseString += "."
-#                 i += 2
-
-#         else:
-#             if decodedString[i-1] == "0" and decodedString[i+1] == "0":
-#                 morseString += " "
-#                 i += 2
-            
-#             elif decodedString[i-1] == "1" and decodedString[i+1] == "1":
-#                 i += 1
-            
-#             elif decodedString[i-1] == "1" and decodedString[i+1] == "0":
-#                 if decodedString[i+2] == "0" and decodedString[i+3] == "0":
-#                     i += 7
-#                     morseString += "   " 
-#                 elif decodedString[i+2] == "0":
-#                     i += 3
-#                     morseString += " "
-# print("The morse code from the previous bit-encoded representation is: ", morseString, '\n')
+print("The respective human string is:\n", humanString)
