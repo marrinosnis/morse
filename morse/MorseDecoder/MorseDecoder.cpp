@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include "MorseDecoder.h"
-#include "morseDictionary.h"
+#include "MorseDictionary.h"
 
 std::string MorseDecoder::decodeMorse(std::string morseCode){
   int counterSpace {0};
