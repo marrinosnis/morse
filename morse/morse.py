@@ -21,7 +21,7 @@ sizeOfMorseBit, indexOfNextBit = findTransmissionRate(bitsMorseString.find('1'),
 if sizeOfMorseBit == 2:
     transmissionRate = 2
 
-elif sizeOfMorseBit>2: # if the size of the 1's bits is bigger than 2, I don't if it has transmission rate or not e.g. if there are 3 1's at he beggining, is it dot'.' with tranmissionRate==3, or is it dash "-" which has 3 1's for decoding?
+elif sizeOfMorseBit>2: # if the size of the 1's bits is bigger than 2, I don't know if it has transmission rate or not e.g. if there are 3 1's at he beggining, is it dot'.' with tranmissionRate==3, or is it dash "-" which has 3 1's for decoding?
     # call the function to check the logic of the transmission rate
     tempHelp = 0
     sizeOfMorseBit2, indexOfNextBit2 = findTransmissionRate(indexOfNextBit, '0', bitsMorseString)
