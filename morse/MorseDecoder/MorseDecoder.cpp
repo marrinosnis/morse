@@ -2,36 +2,35 @@
 #include <string>
 #include "MorseDecoder.h"
 #include "MorseDictionary.h"
+#include <fstream>
 
 std::string MorseDecoder::decodeMorse(std::string morseCode){
-    //morseCode = "          .-.. .- --.. -.--   -.. --- --. .-.-.-   "
-    //morseCode = "       .       ";
-    
-    std::string decoded {};
+    std::string decodedString {};
     std::string dotsDashes {};
-    int sizeOfString = morseCode.size();
+    std::string morseCodeNoSpaces {};
 
     morseCode.erase(0, morseCode.find_first_not_of(" ")); //remove any leading space, up until the first dot '.' or dash '-'
     morseCode.erase(morseCode.find_last_not_of(" ") + 1); //remove any trailing space, from the last dot '.' or dash '-' untill the end of the string
+    morseCodeNoSpaces = morseCode; //when I used the morseCode string, the removed trailing spaces were still accessible from the 28th line
+    int sizeOfString = morseCodeNoSpaces.size();
 
-    for (int index = 0; index < sizeOfString; index++){
+    // loop through the Morse Code, to produce a human readable string 
+     for (int index = 0; index < sizeOfString; index++){
       
-      while( (morseCode[index] != ' ' && index < sizeOfString) ){
-        dotsDashes += morseCode[index];
+      while( (morseCodeNoSpaces[index] != ' ' && index < sizeOfString) ){
+        dotsDashes += morseCodeNoSpaces[index];
         index++;
-      } //if it goes out from the while, that means I reach to a space. Now I need to check the size of the space. If it is 1, that means 
-        //I just need to decode the current part of dots and dashes, and continue to the other dots and dashes
+      }
       
-      decoded += MORSE_CODE[dotsDashes];
+      decodedString += MORSE_CODE[dotsDashes];
       dotsDashes = "";
       
-      if (morseCode[index+1] == ' ' && morseCode[index+2] == ' ') { //here is the fucking problem
-        decoded += " ";
+      if ( morseCodeNoSpaces[index+1] == ' ' && morseCodeNoSpaces[index+2] == ' ') {
+        decodedString += " ";
         index += 2;
       }
 
     }
-  
-  return decoded;
 
+    return decodedString;
 }

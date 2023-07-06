@@ -3,7 +3,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(morse, m){  //'mymodule' is the module that is created and will be imported in the python file
+PYBIND11_MODULE(morse, m){  //'morse' is the module that is created and will be imported in the python file
     m.doc() = "Create a Python module for morseDecoder";
     
     py::class_<MorseDecoder>(m, "MorseDecoderString")  // 'MorseDecoderString' is the name of the class that will be used at the python file. So I can have different name for the .cpp class
