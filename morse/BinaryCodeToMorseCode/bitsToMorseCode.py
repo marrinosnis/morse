@@ -10,7 +10,7 @@ def findTransmissionRate(pos, bit, morseString):
             break
     return size, index
 
-def convertBinaryStrToMorseCodeStr(stringOfBits):
+def convertBitsToDotsDashes(stringOfBits):
     stringOfBits = stringOfBits.strip('0')  # remove possible zeroes from the begin and end of the string
     decodedString = ""
 
