@@ -1,5 +1,5 @@
 
-def convertBinaryToMorseCode(binaryString):
+def convertBinaryToMorseSymbols(binaryString):
     morseString = ""
     dashMorse = "111"
     dotMorse = "1"

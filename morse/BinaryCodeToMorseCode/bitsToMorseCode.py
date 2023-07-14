@@ -46,9 +46,8 @@ def convertBitsToDotsDashes(stringOfBits):
         elif subString == zerosSubstring:
             decodedString += "0"
      # Until here I find the proper bits representation of a coded morse code
-
-
-    morseCodeString = binaryToMorse.convertBinaryToMorseCode(decodedString)
+     
+    morseCodeString = binaryToMorse.convertBinaryToMorseSymbols(decodedString)
     
     return morseCodeString
    
