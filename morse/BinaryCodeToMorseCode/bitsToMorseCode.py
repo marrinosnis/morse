@@ -1,5 +1,5 @@
 # Bits to morse python file
-from BitsToMorse import binaryToMorse
+from BinaryCodeToMorseCode import convertBinaryToMorseSymbols
 
 def findTransmissionRate(pos, bit, morseString):
     size = 0
@@ -14,7 +14,7 @@ def convertBitsToDotsDashes(stringOfBits):
     stringOfBits = stringOfBits.strip('0')  # remove possible zeroes from the begin and end of the string
     decodedString = ""
 
-    transmissionRate = 1   # the 'default' and correct transmission rate of the stringOfBits is: 1
+    transmissionRate = 1   # the 'default' and correct transmission rate of the stringOfBits variable is: 1
     sizeOfMorseBit, indexOfNextBit = findTransmissionRate(stringOfBits.find('1'), '1', stringOfBits)
 
     if sizeOfMorseBit == 2:
@@ -47,7 +47,7 @@ def convertBitsToDotsDashes(stringOfBits):
             decodedString += "0"
      # Until here I find the proper bits representation of a coded morse code
      
-    morseCodeString = binaryToMorse.convertBinaryToMorseSymbols(decodedString)
+    morseCodeString = convertBinaryToMorseSymbols.createProperMorseCodeString(decodedString)
     
     return morseCodeString
    
