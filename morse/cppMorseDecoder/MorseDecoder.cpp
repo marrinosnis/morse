@@ -10,7 +10,7 @@ std::string MorseDecoder::decodeMorse(std::string morseCode){
     std::string morseCodeNoSpaces {};
 
     morseCode.erase(0, morseCode.find_first_not_of(" ")); //remove any leading space, up until the first dot '.' or dash '-'
-    morseCode.erase(morseCode.find_last_not_of(" ") + 1); //remove any trailing space, from the last dot '.' or dash '-' untill the end of the string
+    morseCode.erase(morseCode.find_last_not_of(" ") + 1); //remove any trailing space, from the last dot '.' or dash '-' until the end of the string
     morseCodeNoSpaces = morseCode; //when I used the morseCode string, the removed trailing spaces were still accessible from the 28th line
     int sizeOfString = morseCodeNoSpaces.size();
 
@@ -21,7 +21,7 @@ std::string MorseDecoder::decodeMorse(std::string morseCode){
         dotsDashes += morseCodeNoSpaces[index];
         index++;
       }
-      
+
       decodedString += MORSE_CODE[dotsDashes];
       dotsDashes = "";
       
@@ -29,7 +29,6 @@ std::string MorseDecoder::decodeMorse(std::string morseCode){
         decodedString += " ";
         index += 2;
       }
-
     }
 
     return decodedString;
