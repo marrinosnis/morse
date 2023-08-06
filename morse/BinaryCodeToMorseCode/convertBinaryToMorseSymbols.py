@@ -6,7 +6,7 @@ def createProperMorseCodeString(binaryString):
     pauseBetweenWords = "0000000"
     pauseBetweenChars = "000"
     pauseBetweenSymbols = "0"
-    i=0
+    i = 0
 
     while i < len(binaryString):
         # check for ones

@@ -1,0 +1,25 @@
+name: Run Morse Tests
+
+on:
+  push:
+    branches:
+      - 'test_branch'
+
+jobs:
+  Set_the_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run on-line code
+        run: echo 'Hello From Marinos'
+
+      - name: Run multiple lines
+        run: |
+          echo First
+          echo sEcond
+          echo thIrd
+          pwd
+          cd ../../cppToPythonModule
+          bash build.sh
