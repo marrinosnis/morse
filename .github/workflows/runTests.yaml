@@ -22,4 +22,5 @@ jobs:
           echo thIrd
           pwd
           cd morse/cppToPythonModule/
+          pwd
           bash build.sh
