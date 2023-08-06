@@ -45,7 +45,8 @@ jobs:
 
       - name: Run the program
         run: |
+          cd morse
           pwd
           ls -la
-          python3 morse/morse.py
+          python3 morse.py
           
