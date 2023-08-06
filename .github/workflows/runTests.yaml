@@ -44,4 +44,4 @@ jobs:
           ls -la morse.so
 
       - name: Run the program
-        run: python3 morse.py
+        run: python3 morse/morse.py
