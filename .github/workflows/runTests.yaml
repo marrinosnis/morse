@@ -33,20 +33,15 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install pybind11
 
-      - name: Run on-line code
-        run: echo 'Hello From Marinos'
-
-      - name: Run multiple lines
+      - name: Create the morse module from C++ for Python
         run: |
-          echo First
-          echo sEcond
-          echo thIrd
-          pwd
           cd morse/cppToPythonModule/
-          pwd
           bash build.sh
 
       - name: Check the shared object that was created
         run: |
           cd morse
-          ls -la
+          ls -la morse.so
+
+      - name: Run the program
+        run: python3 morse.py
