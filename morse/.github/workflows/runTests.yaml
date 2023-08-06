@@ -1,10 +1,12 @@
 name: Run Morse Tests
 
 on:
-  push
+  push:
+    branches:
+      - 'test_branch'
 
 jobs:
-  build:
+  Set_the_env:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
