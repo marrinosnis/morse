@@ -20,6 +20,14 @@ jobs:
       - name: Verify g++ version
         run: g++ --version
 
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Verify Python version
+        run: python3 -V
+
       - name: Run on-line code
         run: echo 'Hello From Marinos'
 
