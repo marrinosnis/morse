@@ -45,3 +45,8 @@ jobs:
           cd morse/cppToPythonModule/
           pwd
           bash build.sh
+
+      - name: Check the shared object that was created
+        run: |
+          cd ..
+          ls -la
