@@ -48,4 +48,5 @@ jobs:
 
       - name: Check the shared object that was created
         run: |
+          cd morse
           ls -la
