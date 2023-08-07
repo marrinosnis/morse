@@ -10,9 +10,6 @@ jobs:
     name: Set the requirements for the environment
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        
       - name: Install g++ compiler
         run: |
           sudo apt update
@@ -38,6 +35,9 @@ jobs:
     name: Execute the programm
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
       - name: Create the morse module from C++ for Python
         run: |
           cd morse/cppToPythonModule/
