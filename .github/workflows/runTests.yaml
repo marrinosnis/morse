@@ -20,11 +20,6 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install pybind11
-        run: |
-          python3 -m pip install --upgrade pip
-          pip install pybind11
-
       - name: Verify g++ and Python versions
         run: |
           g++ --version
@@ -35,6 +30,11 @@ jobs:
     name: Execute the programm
     runs-on: ubuntu-latest
     steps:
+      - name: Install pybind11
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install pybind11
+      
       - name: Checkout Code
         uses: actions/checkout@v3
         
