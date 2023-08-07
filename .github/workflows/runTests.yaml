@@ -40,16 +40,14 @@ jobs:
         
       - name: Create the morse module from C++ for Python
         run: |
-          cd morse/cppToPythonModule/
+          cd cppToPythonModule
           bash build.sh
 
       - name: Check the shared object that was created
         run: |
-          cd morse
           ls -la morse.so
 
       - name: Run the program
         run: |
-          cd morse
           python3 morse.py
           
