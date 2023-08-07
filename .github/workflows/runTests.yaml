@@ -6,27 +6,7 @@ on:
       - 'test_branch'
 
 jobs:
-  set-the-env:
-    name: Set the requirements for the environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install g++ compiler
-        run: |
-          sudo apt update
-          sudo apt install -y g++
-
-      - name: Install Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
-
-      - name: Verify g++ and Python versions
-        run: |
-          g++ --version
-          python3 -V
-
   Run-the-program:
-    needs: [set-the-env]
     name: Execute the programm
     runs-on: ubuntu-latest
     steps:
