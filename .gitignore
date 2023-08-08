@@ -3,3 +3,4 @@ morse/.idea
 __pycache__
 morse.so
 BinaryCodeToMorseCode/__pycache__/bitsToMorseCode.cpython-310.pyc
+BinaryCodeToMorseCode/__pycache__
