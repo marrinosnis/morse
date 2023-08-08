@@ -14,13 +14,13 @@ print("The final morse code form is: {0}\n".format(morseString))
 mr = morse.DecodeMorseCode()
 humanString = mr.decodeMorse(morseString)
 
-print("The respective human string is\n{0}".format(humanString))
-
 with open('expectedText.txt', 'r') as file:
     text = file.readline()
+    text = text.strip()  # remove any possible newline characters '\n' from the tail of the string, in order to do a correct assertion
 
-text = text.strip()  # remove any possible newline characters '\n' from the tail of the string, in order to do a correct assertion
-print(text)
+print("The respective human string is: {0}".format(humanString))
+print("The original text is          : {0}".format(text))
+
 if humanString == text:
     print("The decoder works fine")
 else:
