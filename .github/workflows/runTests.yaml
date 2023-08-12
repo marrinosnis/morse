@@ -25,7 +25,7 @@ jobs:
 
       - name: Check the shared object that was created
         run: |
-          ls -la morse.so
+          ls -la morseModule.so
 
       - name: Run the program
         run: |
