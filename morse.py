@@ -1,17 +1,17 @@
 from BinaryCodeToMorseCode import bitsToMorseCode
-import morse  # this is from the .cpp file that is created as a python module. The morse is the morse.so
+import morseModule  # this is from the .cpp file that is created as a python module. The morse is the morse.so
 
-with open('bitMorseString.txt', 'r') as binaryCode:
-    binaryMorseCode = binaryCode.readline()
+with open('binaryMorseCode.txt', 'r') as binaryCode:
+    binaryMorseCode = [line for line in binaryCode]
 
-morseString = bitsToMorseCode.convertBitsToDotsDashes(binaryMorseCode)
+morseString = bitsToMorseCode.convertBitsToDotsDashes(binaryMorseCode[1])
 print("The final morse code form is: {0}\n".format(morseString))
 
 # from here I pass the variable to the c++ function, and it will print the human string
-mr = morse.DecodeMorseCode()
+mr = morseModule.DecodeMorseCode()
 humanString = mr.decodeMorse(morseString)
 
-with open('expectedText.txt', 'r') as file:
+with open('tests/expectedText.txt', 'r') as file:
     text = file.readline()
     text = text.strip()  # remove any possible newline characters '\n' from the tail of the string, in order to do a correct assertion
 

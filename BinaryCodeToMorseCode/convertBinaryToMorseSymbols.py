@@ -1,32 +1,34 @@
 
 def createProperMorseCodeString(binaryString):
     morseString = ""
-    dashMorse = "111"
-    dotMorse = "1"
-    pauseBetweenWords = "0000000"
-    pauseBetweenChars = "000"
-    pauseBetweenSymbols = "0"
-    i = 0
+    binaryMorseRules = {
+        "dashMorse": "111",
+        "dotMorse": "1",
+        "pauseBetweenWords": "0000000",
+        "pauseBetweenChars": "000",
+        "pauseBetweenSymbols": "0"
+    }
 
+    i = 0
     while i < len(binaryString):
         # check for ones
-        if dashMorse == binaryString[i:i+3]:
+        if binaryMorseRules["dashMorse"] == binaryString[i:i+3]:
             morseString += "-"
             i += 3
             continue
-        elif dotMorse == binaryString[i]:
+        elif binaryMorseRules["dotMorse"] == binaryString[i]:
             morseString += "."
             i += 1
             continue
 
         # check for zeroes
-        if pauseBetweenWords == binaryString[i:i+7]:
+        if binaryMorseRules["pauseBetweenWords"] == binaryString[i:i+7]:
             morseString += "   "
             i += 7
-        elif pauseBetweenChars == binaryString[i:i+3]:
+        elif binaryMorseRules["pauseBetweenChars"] == binaryString[i:i+3]:
             morseString += " "
             i += 3
-        elif pauseBetweenSymbols == binaryString[i]:
+        elif binaryMorseRules["pauseBetweenSymbols"] == binaryString[i]:
             i += 1
     
     return morseString
