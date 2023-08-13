@@ -22,12 +22,12 @@ jobs:
 
       - name: Create the morse module from C++ for Python
         run: |
-          cd cppToPythonModule
+          cd src/cppToPythonModule
           bash build.sh
 
       - name: Check the shared object that was created
         run: |
-          ls -la morseModule.so
+          ls -la src/morseModule.so
 
       - name: Run the program
         run: |
