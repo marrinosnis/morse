@@ -1,0 +1,5 @@
+*.cpp linguist-detectable=true
+*.h linguist-detectable=true
+*.py linguist-detectable=true
+*.yaml linguist-detectable=true
+*.sh linguist-detectable=true
