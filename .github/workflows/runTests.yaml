@@ -6,18 +6,20 @@ on:
       - 'test_branch'
 
 jobs:
-  Run-the-program:
-    name: Execute the programm
+  Run-test-case-scenarios:
+    name: Set OS
     runs-on: ubuntu-latest
+
     steps:
       - name: Install pybind11
         run: |
           python3 -m pip install --upgrade pip
           pip install pybind11
-      
+          pip install pytest
+
       - name: Checkout Code
         uses: actions/checkout@v3
-        
+
       - name: Create the morse module from C++ for Python
         run: |
           cd cppToPythonModule
@@ -29,5 +31,6 @@ jobs:
 
       - name: Run the program
         run: |
-          python3 morse.py
+          cd tests/
+          pytest testMorseParser.py
           

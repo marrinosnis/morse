@@ -1,5 +1,5 @@
 # Bits to morse python file
-from BinaryCodeToMorseCode import convertBinaryToMorseSymbols
+from src.BinaryCodeToMorseCode import convertBinaryToMorseSymbols
 
 
 def findNumberOfBitsPerGroup(pos, bit, morseString):
