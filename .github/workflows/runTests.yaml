@@ -3,7 +3,7 @@ name: Run Morse Tests
 on:
   push:
     branches:
-      - 'test_branch'
+      - 'improvements-branch'
 
 jobs:
   Run-test-case-scenarios:
@@ -32,5 +32,5 @@ jobs:
       - name: Run the program
         run: |
           cd tests/
-          pytest testMorseParser.py
+          pytest testMorseParser.p
           
