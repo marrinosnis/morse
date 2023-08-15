@@ -1,4 +1,4 @@
-from src.BinaryCodeToMorseCode import bitsToMorseCode, convertBinaryToMorseSymbols
+from src.services.BinaryCodeToMorseCode import convertBinaryToMorseSymbols, bitsToMorseCode
 from tests import morseModule
 
 with open('../src/binaryMorseCode.txt', 'r') as binaryCodeTr:
