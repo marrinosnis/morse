@@ -1,5 +1,5 @@
-from src.BinaryCodeToMorseCode import bitsToMorseCode, convertBinaryToMorseSymbols
-from tests import morseModule
+from src.services.BinaryCodeToMorseCode import convertBinaryToMorseSymbols, bitsToMorseCode
+from src.services.cppToPythonModule import morseModule
 
 with open('../src/binaryMorseCode.txt', 'r') as binaryCodeTr:
     binaryMorseCodeWithTransmission = [line.strip() for line in binaryCodeTr]

@@ -1,9 +1,9 @@
-from src.BinaryCodeToMorseCode import bitsToMorseCode
+from src.services.BinaryCodeToMorseCode import bitsToMorseCode
 import os
-import morseModule  # this is from the .cpp file that is created as a python module. The morseModule is the morseModule.so
+from src.services.cppToPythonModule import morseModule  # this is from the .cpp file that is created as a python module. The morseModule is the morseModule.so
 
 dir_path = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(dir_path, 'binaryMorseCode.txt')
+file_path = os.path.join(dir_path, '../binaryMorseCode.txt')
 
 with open(file_path, 'r') as binaryCode:
     binaryMorseCode = [line for line in binaryCode]

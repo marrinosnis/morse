@@ -1,9 +1,17 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: "", description: 'The git branch to build')
+    }
     stages {
         stage('build') {
             steps {
-                echo 'building the application...'
+                script{
+                    sh "sudo apt update"
+                    sh "sudo apt install python3.10"
+                    echo "The python version is:"
+                    sh "python3 -V"
+                }
             }
         }
 
