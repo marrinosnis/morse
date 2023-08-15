@@ -27,7 +27,7 @@ jobs:
 
       - name: Check the shared object that was created
         run: |
-          ls -la src/morseModule.so
+          ls -la src/services/cppToPythonModule/morseModule.so
 
       - name: Run the program
         run: |
