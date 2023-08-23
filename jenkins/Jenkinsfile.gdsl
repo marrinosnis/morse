@@ -1,15 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('version') {
-            steps {
-                sh 'python3 --version'
-            }
+    parameters{
+        text(name: 'BRANCH_NAME', defaultValue: '', description: 'Enter the branch you want to build'
+    }
+        stage('Validate branch') {
+            when { expression { params.BRANCH_NAME == 'master' || params.BRANCH_NAME = ''} }
+            error ('Abort! The branch name is master or is empty')
         }
-
         stage('test') {
             steps {
-                echo 'testing the application...'
+                echo 'Testing stage has been reached'
             }
         }
     }
