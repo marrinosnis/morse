@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters{
-        text(name: 'BRANCH_NAME', defaultValue: '', description: 'Enter the branch you want to build')
+        string(name: 'BRANCH_NAME', defaultValue: '', description: 'Enter the branch you want to build')
     }
     stages {
         stage('Validate branch') {
