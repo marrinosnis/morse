@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    stages {
     parameters{
         text(name: 'BRANCH_NAME', defaultValue: '', description: 'Enter the branch you want to build')
     }
+    stages {
         stage('Validate branch') {
             when { expression { params.BRANCH_NAME == 'master' || params.BRANCH_NAME == ''} }
             steps{
