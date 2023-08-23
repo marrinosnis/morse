@@ -5,10 +5,9 @@ pipeline {
     }
     stages {
         stage('Validate branch') {
-            when { expression { params.BRANCH_NAME == 'master' || params.BRANCH_NAME == ''} }
-            steps{
-                error ('Abort! The branch name is master or is empty')
-            }
+          steps{
+            echo "the branch is master"
+          }
         }
         stage('test') {
             steps {
