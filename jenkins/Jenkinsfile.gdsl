@@ -13,6 +13,7 @@ pipeline {
         stage('test') {
             steps {
                 echo 'Testing stage has been reached'
+                sh 'python -V'
             }
         }
     }
