@@ -33,4 +33,16 @@ jobs:
         run: |
           cd tests/
           pytest testMorseParser.py
-          
+
+  jenkins-docker:
+    needs: run-tests
+    name: Run jenkins in docker container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull the Jenkins image from the Github Packages
+        run: docker pull ghcr.io/marrinosnis/jenkins-python-pybind11:latest
+
+      - name: Run the docker compose to build the container from the pulled image
+        run: |
+          docker compose up -d

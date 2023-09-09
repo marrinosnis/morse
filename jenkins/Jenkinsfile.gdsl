@@ -10,10 +10,22 @@ pipeline {
                 error ('Abort! The branch name is master or is empty')
             }
         }
-        stage('test') {
+        stage('Create the Python module from .cpp file') {
             steps {
-                echo 'Testing stage has been reached'
-                sh 'python3 -V'
+                sh '''
+                        cd src/services/cppToPythonModule
+                        ls -la
+                        chmod 777 build.sh
+                        ./build.sh
+                   '''
+            }
+        }
+        stage('Run the Python tests with the pytest library'){
+            steps{
+                sh '''
+                    cd tests/
+                    pytest testMorseParser.py
+                '''
             }
         }
     }

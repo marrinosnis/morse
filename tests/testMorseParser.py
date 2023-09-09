@@ -25,7 +25,7 @@ morseCodeData = {
 
 def testFindTransmissionRate():
     assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[0]) == morseCodeData['firstText'][0]
-    assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[0]) == morseCodeData['secondText'][0]
+    assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[1]) == morseCodeData['secondText'][0]
     assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[2]) == morseCodeData['thirdText'][0]
     assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[3]) == morseCodeData['forthText'][0]
     assert bitsToMorseCode.findTransmissionRate(binaryMorseCodeWithTransmission[4]) == morseCodeData['fifthText'][0]
@@ -36,7 +36,7 @@ def testBinaryNoTransmissionRate():
     assert bitsToMorseCode.createBinaryMorseStringWithoutRate(binaryMorseCodeWithTransmission[1], 2) == morseCodeData['secondText'][1]
     assert bitsToMorseCode.createBinaryMorseStringWithoutRate(binaryMorseCodeWithTransmission[2], 6) == morseCodeData['thirdText'][1]
     assert bitsToMorseCode.createBinaryMorseStringWithoutRate(binaryMorseCodeWithTransmission[3], 1) == morseCodeData['forthText'][1]
-    assert bitsToMorseCode.createBinaryMorseStringWithoutRate(binaryMorseCodeWithTransmission[0], 1) == morseCodeData['fifthText'][1]
+    assert bitsToMorseCode.createBinaryMorseStringWithoutRate(binaryMorseCodeWithTransmission[4], 1) == morseCodeData['fifthText'][1]
 
 
 def testCreateProperMorseCodeString():
