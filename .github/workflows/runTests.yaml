@@ -35,14 +35,44 @@ jobs:
           pytest testMorseParser.py
 
   jenkins-docker:
-    needs: run-tests
-    name: Run jenkins in docker container
-    runs-on: ubuntu-latest
+   needs: run-tests
+   name: Run jenkins in docker container
+   runs-on: ubuntu-latest
 
-    steps:
-      - name: Pull the Jenkins image from the Github Packages
-        run: docker pull ghcr.io/marrinosnis/jenkins-python-pybind11:latest
+   steps:
+     - name: checkout the project for the new job
+       uses: actions/checkout@v3
 
-      - name: Run the docker compose to build the container from the pulled image
-        run: |
-          docker compose up -d
+     - name: Download and setup NGROK
+       run: |
+         wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+         unzip ngrok-stable-linux-amd64.zip
+         ./ngrok authtoken ${{ secrets.NGROK_INSTALL_TOKEN }}
+
+     - name: Login to Github Packages Docker Registry
+       run: echo ${{ secrets.TOKEN_FOR_PACKAGES }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+     - name: Pull the image from the Github Docker Registry
+       run: docker pull ghcr.io/${{ github.actor }}/jenins-image:latest
+
+#     - name: Get the IP of the github runner
+#       run: |
+#        RUNNER_IP=$(curl -s ifconfig.me)
+#        echo "Runner ip $RUNNER_IP"
+       
+     - name: Run the pulled Docker image
+       run: |
+         docker run -d --name jenkins-container -p 8080:8080 -p 50000:5000 ghcr.io/marrinosnis/jenins-image:latest
+#         cd docker
+#         docker compose up
+
+
+     - name: Start the NGROK service
+       run: ./ngrok http 8080 &
+
+     - name: Wait for NGROK to initialize
+       run: sleep 10
+
+     - name: Get the public IP of NGROK
+       run: |
+         curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p'
