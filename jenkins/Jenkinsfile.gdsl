@@ -1,8 +1,10 @@
 pipeline {
     agent any
+
     parameters{
         string(name: 'BRANCH_NAME', defaultValue: '', description: 'Enter the branch you want to build')
     }
+
     stages {
         stage('Validate branch') {
             when { expression { params.BRANCH_NAME == 'master' || params.BRANCH_NAME == ''} }
@@ -10,7 +12,7 @@ pipeline {
                 error ('Abort! The branch name is master or is empty')
             }
         }
-        stage('Create the Python module from .cpp file') {
+        stage('Create custom Python module') {
             steps {
                 sh '''
                         cd src/services/cppToPythonModule
