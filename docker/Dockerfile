@@ -29,6 +29,7 @@ WORKDIR /var/jenkins_home
 # the data/ folder is from the host machine The '.' means "at the current working directory" which has been set to /var/jenkins, where I want to put my data
 #COPY my_data/ .
 
-#VOLUME	/var/jenkins_home inside the container
+#VOLUME	/var/jenkins_home
+#inside the container
 
 USER jenkins

@@ -1,7 +1,7 @@
 version: '3'
 services:
   jenkins:
-    image: ghcr.io/marrinosnis/jenkins-image-with-volumes:latest
+    image: ghcr.io/marrinosnis/jenkins-image-volumes:latest
     container_name: jenkins-container
     ports:
       - 8080:8080

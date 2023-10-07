@@ -58,7 +58,6 @@ jobs:
         run: |
           docker compose -f docker/docker-compose.yaml up -d
           sleep 5  # give some time in order the container to start correctly
-          bash docker/scripts/getContainer.sh
 
       - name: Start the NGROK service
         run: ./ngrok http 8080 &
