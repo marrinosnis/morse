@@ -59,15 +59,16 @@ jobs:
           docker compose -f docker/docker-compose.yaml up -d
           sleep 5  # give some time in order the container to start correctly
 
-      - name: Start the NGROK service
-        run: ./ngrok http 8080 &
-
-      - name: Wait for NGROK to initialize
-        run: sleep 10
+      - name: Start the NGROK service and wait for 10 seconds to initialize
+        run: | 
+          ./ngrok http 8080 &
+          sleep 10
 
       - name: Get the public IP of NGROK
         run: |
-          curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p'
+          ngrok_public_ip=$(curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p')
+          echo $ngrok_public_ip
+          curl https://${ngrok_public_ip}/job/run-tests/buildWithParameters --user marinos:11c051fecbb85caab0ea20dcde889d07cc --data BRANCH_NAME=improvements_branch
 
       - name: Wait for 60 seconds
         run: sleep 60
