@@ -3,11 +3,11 @@ name: Run Morse Tests
 on:
   push:
     branches:
-      - 'test_branch'
+      - 'improvements-branch'
 
 jobs:
-  Run-test-case-scenarios:
-    name: Set OS
+  run-tests:
+    name: Set env and run tests
     runs-on: ubuntu-latest
 
     steps:
@@ -22,15 +22,53 @@ jobs:
 
       - name: Create the morse module from C++ for Python
         run: |
-          cd src/cppToPythonModule
+          cd src/services/cppToPythonModule
           bash build.sh
 
       - name: Check the shared object that was created
         run: |
-          ls -la src/morseModule.so
+          ls -la src/services/cppToPythonModule/morseModule.so
 
-      - name: Run the program
+      - name: Run unit tests
         run: |
           cd tests/
           pytest testMorseParser.py
-          
+
+  jenkins-docker:
+    name: Run jenkins in docker container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout the project for the new job
+        uses: actions/checkout@v3
+
+      - name: Download and setup NGROK
+        run: |
+          wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+          unzip ngrok-stable-linux-amd64.zip
+          ./ngrok authtoken ${{ secrets.NGROK_INSTALL_TOKEN }}
+
+      - name: Login to Github Packages Docker Registry
+        run: echo ${{ secrets.TOKEN_FOR_PACKAGES }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Pull the image from the Github Docker Registry
+        run: docker pull ghcr.io/${{ github.actor }}/jenkins-image-volumes:latest
+
+      - name: Run the pulled Docker image to a Container
+        run: |
+          docker compose -f docker/docker-compose.yaml up -d
+          sleep 5  # give some time in order the container to start correctly
+
+      - name: Start the NGROK service and wait for 10 seconds to initialize
+        run: | 
+          ./ngrok http 8080 &
+          sleep 10
+
+      - name: Get the public IP of NGROK
+        run: |
+          ngrok_public_ip=$(curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p')
+          echo $ngrok_public_ip
+          curl https://${ngrok_public_ip}/job/run-tests/buildWithParameters --user marinos:11c051fecbb85caab0ea20dcde889d07cc --data BRANCH_NAME=improvements-branch
+
+      - name: Wait for 60 seconds
+        run: sleep 60

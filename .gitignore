@@ -1,9 +1,8 @@
 .idea
 morse/.idea
 __pycache__
-src/morseModule.so
-tests/morseModule.so
-src/BinaryCodeToMorseCode/__pycache__/bitsToMorseCode.cpython-310.pyc
-src/BinaryCodeToMorseCode/__pycache__/convertBinaryToMorseSymbols.cpython-310.pyc
-src/BinaryCodeToMorseCode/__pycache__
+src/services/cppToPythonModule/morseModule.so
+src/services/BinaryCodeToMorseCode/__pycache__/bitsToMorseCode.cpython-310.pyc
+src/services/BinaryCodeToMorseCode/__pycache__/convertBinaryToMorseSymbols.cpython-310.pyc
+src/services/BinaryCodeToMorseCode/__pycache__
 tests/.pytest_cache
