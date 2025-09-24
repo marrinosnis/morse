@@ -7,14 +7,14 @@ This project was created from 2 parts of an exercise in CodeWars website about t
 The first part is implemented in `C++` and can be found [here](https://www.codewars.com/kata/54b724efac3d5402db00065e/cpp).\
 The second part, which is a continuation of the first part is implemented in `Python` and can be found [here](https://www.codewars.com/kata/54b72c16cd7f5154e9000457/python). \
 
-### _note1:_
-**_Each of the 2 parts that are combined in this project, has passed all the required tests the CoderWars\
-site needs in order to make the solution acceptable. In order to combine the 2 solutions, a refactor has been \
-applied. Given that, the final combination outcome will differ from the independent parts of code._**
+> [!NOTE]  
+> **_Each of the 2 parts that are combined in this project, has passed all the required tests the CoderWars\
+> site needs in order to make the solution acceptable. In order to combine the 2 solutions, a refactor has been \
+> applied. Given that, the final combination outcome will differ from the independent parts of code._**
 
-### _note2:_
-Please make sure that you have read and **understand** the definition and rules of each part in order to \
-have a full sight of the project solution.
+> [!NOTE]  
+> Please make sure that you have read and **understand** the definition and rules of each part in order to \
+> have a full sight of the project solution.
 
 ## Prerequisites
 In order to be able to run the main `morse.py` file, you should have installed the `Python 3.10.x` version \
@@ -32,9 +32,10 @@ For python
 For C++:
 >  g++ --version
 
-### _note3:_
-Also make sure that you have installed the `g++` compiler instead of `gcc`. This might be a minor but very \
-important notice. With the `gcc` compiler there might occur some mulfunctioning
+> [!NOTE]  
+> Also make sure that you have installed the `g++` compiler instead of `gcc`. This might be a minor but very \
+> important notice. With the `gcc` compiler there might occur some mulfunctioning
+
 ## Structure - Flow - Steps of procedure
 **1**: The main file `morse.py` where the binary data are read from the file `binaryMorseCode.txt` and all the \
 modules-functions and classes are called to print the final result. It can be found to the following path:
